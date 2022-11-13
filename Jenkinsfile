@@ -18,7 +18,7 @@ pipeline  {
                  dir('.'){
                    sh ' docker ps -q --filter "name=front_dashboard" | grep -q . && docker stop front_dashboard || echo Not Found'
 				
-                    sh 'docker ps -q --filter "name=front_dashboard" | grep -q . && docker rm front_dashboard || echo Not Found'
+                    sh 'docker ps -a --filter "name=front_dashboard" | grep -q . && docker rm front_dashboard || echo Not Found'
                 }
             }
         }
