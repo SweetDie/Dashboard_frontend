@@ -16,9 +16,9 @@ pipeline  {
             steps {
                 echo 'Removing containers ...'
                  dir('.'){
-                   sh ' docker ps -q --filter "name=front_dashboard" | grep -q . && docker stop front_dashboard || echo Not Found'
+                   sh ' docker ps -a --filter "name=front_dashboard" | grep -q . && docker stop front_dashboard || echo Container Not Found'
 				
-                    sh 'docker ps -a --filter "name=front_dashboard" | grep -q . && docker rm front_dashboard || echo Not Found'
+                    sh 'docker ps -a --filter "name=front_dashboard" | grep -q . && docker rm front_dashboard || echo Container Not Found'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline  {
             steps {
                 echo 'Removing images ...'
                  dir('.'){
-                    sh 'docker images -q --filter "name=sweetdie/front_dashboard" | grep -q . && docker rmi sweetdie/front_dashboard || echo Not Found'
+                    sh 'docker images -a --filter "name=sweetdie/front_dashboard" | grep -q . && docker rmi sweetdie/front_dashboard || echo Images Not Found'
 
                 }
             }
