@@ -26,7 +26,7 @@ pipeline  {
             steps {
                 echo 'Removing images ...'
                  dir('.'){
-                    sh 'docker ps -q --filter "name=sweetdie/front_dashboard" | grep -q . && docker rmi sweetdie/front_dashboard || echo Not Found'
+                    sh 'docker images -q --filter "name=sweetdie/front_dashboard" | grep -q . && docker rmi sweetdie/front_dashboard || echo Not Found'
 
                 }
             }
